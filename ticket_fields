@@ -1,0 +1,6 @@
+priority (required)
+description (optional)
+title (required)
+designation (required)
+ticket_number (MUST)
+image (optional)

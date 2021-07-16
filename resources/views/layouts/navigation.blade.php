@@ -36,15 +36,15 @@
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
-                            <x-dropdown-link>
-                                <div>{{ Auth::user()->username }}</div>
+                            <x-dropdown-link class="flex" :href="route('profile')">
+                                <img class="mr-2" src="{{ asset('person-circle.svg') }}">{{ Auth::user()->username }}
                             </x-dropdown-link>
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
+                            <x-dropdown-link class="flex" :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                <img class="mr-2" src="{{ asset('box-arrow-right.svg') }}">{{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

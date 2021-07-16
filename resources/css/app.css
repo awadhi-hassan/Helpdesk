@@ -2,10 +2,15 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-.card {
+#dashboard, #dashboard_lower {
     transition: 1s;
 }
 
-.card-body:hover {
-    transform: 1.3
+#ticket, #faqs, #contactus, #feedback, #forum {
+    border-radius: 25px;
+}
+
+#ticket:hover, #faqs:hover, #contactus:hover, #feedback:hover, #forum:hover {
+    box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.4);
+    transform: scale(1.06);
 }

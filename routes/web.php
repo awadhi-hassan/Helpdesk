@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ProfileController;
+#use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,9 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('admin', function() {
+    return view('admin');
+})->middleware(['role:admin']);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -22,8 +27,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('profile',  function(){
-    return view('profile.index', array('user' => Auth::user()));
-});
+Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+
+Route::resource('ticket', TicketsController::class)->names([
+    'index' => 'ticket',
+]);
 
 require __DIR__.'/auth.php';
