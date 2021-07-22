@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'bootstrap';
 
 #dashboard, #dashboard_lower {
     transition: 1s;
