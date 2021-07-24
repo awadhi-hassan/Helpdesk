@@ -30,7 +30,9 @@ Route::get('/dashboard', function () {
 Route::get('profile', [ProfileController::class, 'index'])->name('profile');
 
 Route::resource('ticket', TicketsController::class)->names([
-    'index' => 'ticket',
+    'index' => 'ticket.index',
+    'create' => 'ticket.create',
+    'store' => 'ticket.store',
 ]);
 
 require __DIR__.'/auth.php';

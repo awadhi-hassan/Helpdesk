@@ -11,7 +11,7 @@
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
                 <div>
                     <div class="p-6 bg-white flex" style="justify-content: space-around;" id="dashboard">
-                        <a style="color: black; text-decoration: none" href="{{ route('ticket') }}">
+                        <a style="color: black; text-decoration: none" href="{{ route('ticket.create') }}">
                             <div class="card mt-3" id="ticket" style="padding: 20px;">
                                 <div class="flex ml-10">
                                     <img src="{{ asset('ticket.jpeg') }}" style="height: 50px; width: auto;" alt="">

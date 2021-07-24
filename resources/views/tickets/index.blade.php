@@ -1,60 +1,41 @@
 <x-app-layout>
     <x-slot name='header'>
-        <strong>Create Your ticket</strong>
+        <div class="d-flex" style="justify-content: space-around;">
+            <strong class="mt-2">My Tickets</strong>
+            <a href="{{ route('ticket.create') }}">
+                <button class="btn" style="background-color: #242424; color:white"> Create Ticket</button>
+            </a>
+        </div>
     </x-slot>
 
-    <div class="py-3">
-        <div class="container d-flex justify-content-center">
-            <div class="col-7">
+    <div class="container py-5">
 
-                <form action="" method="POST">
-                    @csrf_token
-                    <div class="form-group my-2">
-                        <label for="text"><b>Title</b></label><br>
-                        <input class="form-control" type="text" name="title" :value="old('title')" placeholder="title"/>
-                    </div>
-        
-                    <div class="form-group my-2">
-                        <label for="designation"><b>Designation</b></label><br>
-                        <select class="form-control" name="designation" :value="old('designation')" id="designation">
-                            <option value="ict">ICT</option>
-                            <option value="recas">Recas</option>
-                            <option value="hr">Human Resource</option>
-                            <option value="catering">Catering</option>
-                            <option value="hk">House Keeping</option>
-                            <option value="aintenance">Maintenance</option>
-                            <option value="accomodation">Accomodation</option>
-                            <option value="accounting">Accounting</option>
-                            <option value="procurement">Procurement</option>
-                        </select>
-                    </div>
-        
-                    <div class="form-group my-2">
-                        <label for="priority"><b>Priority</b></label><br>
-                        <select class="form-control" name="priority" id="priority" :value="old('priority')">
-                            <option value="high">High</option>
-                            <option value="medium">Medium</option>
-                            <option value="low">Low</option>
-                        </select>
-                    </div>
-        
-                    <div class="form-group my-2">
-                        <label for="dec"><b>Description</b></label><br>
-                        <textarea class="form-control" name="desc" :value="old('desc')" id="desc" cols="35" rows="5" placeholder="please describe the problem you are facing..."></textarea>
-                    </div>
-        
-                    <div class="form-group my-2">
-                        <label for="pic"><b>Sample Picture</b></label><br>
-                        <input class="form-control-file" type="file" name="pic" id="pic">
-                    </div>
+        <table class="table">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">Id</th>
+                    <th scope="col">Ticket Number</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Designation</th>
+                    <th scope="col">Priority</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tickets as $ticket)
+                    <tr>
+                        <td scope="row">{{ $ticket->id }}</td>
+                        <td>{{ $ticket->ticket_number }}</td>
+                        <td>{{ $ticket->title }}</td>
+                        <td>{{ $ticket->designation }}</td>
+                        <td>{{ $ticket->priority }}</td>
+                        <td>{{ $ticket->description }}</td>
+                        <td>Pending</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-                    <div class="form-group my-2 d-flex justify-content-end">
-                        <button class="btn btn-primary" type="submit">Create Ticket</button>
-                    </div>
-
-                </form>
-
-            </div>    
-        </div>
     </div>
 </x-app-layout>
