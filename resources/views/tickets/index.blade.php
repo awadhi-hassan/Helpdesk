@@ -10,7 +10,7 @@
 
     <div class="container py-5">
 
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr class="table-dark">
                     <th scope="col">Id</th>
