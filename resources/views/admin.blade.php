@@ -27,10 +27,7 @@
             document.getElementById("admin-tickets").style.display = 'none'
             document.getElementById("admin-users").style.display = 'none'
         }
-        function filter() {
-            document.getElementById("tickets-table").style.display = 'none'
-            document.getElementById("tickets-filter").style.display = 'flex'
-        }
+        
     </script>
 
     <div class="d-flex">
@@ -86,11 +83,12 @@
 
             <h4 class="pt-2" style="text-align:center;"><strong>Tickets in the System</strong></h4>
             <form action="{{ action('AdminController@index') }}" method="GET">
-                @csrf
+                
                 <div class="form-group d-flex align-items-center ml-10">
                     <label for="filter" class="mr-3"><strong>Filter by Department:</strong></label>
                     <div class="col-3">
                         <select class="form-control" name="filter" id="filter">
+                            <option value=""></option>
                             <option value="ICT">ICT</option>
                             <option value="RECAS">Recas</option>
                             <option value="HR">Human Resource</option>
@@ -103,9 +101,10 @@
                         </select>
                     </div>
                     <div>
-                        <button type="submit" class="btn btn-sm ml-10" style="background-color: #242424; color: white;" onclick="filter()">Filter</button>
+                        <button type="submit" class="btn btn-sm ml-10" style="background-color: #242424; color: white;">Filter</button>
                     </div>
                 </div>
+                
             </form>
             <div class="pt-2" id="tickets-table" style="display: flex;">
                 <!-- All the Tickets -->
@@ -135,43 +134,40 @@
                 </table>                
             </div>
 
-            <!-- Filtered Tickets -->
-            <div class="py-2" id="tickets-filter" style="display: none;">
-                <table class="table table-hover" >
-                    <thead>
-                        <tr class="table-dark">
-                            <th scope="col">Id</th>
-                            <th scope="col">Ticket Number</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Designation</th>
-                            <th scope="col">Priority</th>
-                            <th scope="col">Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>                        
-                        @foreach ($ftickets as $fticket)
-                            <tr>
-                                <td scope="row">{{ $ticket->id }}</td>
-                                <td scope="row">{{ $ticket->ticket_number }}</td>
-                                <td scope="row">{{ $ticket->title }}</td>
-                                <td scope="row">{{ $ticket->designation }}</td>
-                                <td scope="row">{{ $ticket->priority }}</td>
-                                <td scope="row">{{ $ticket->description }}</td>
-                            </tr>
-                        @endforeach                        
-                    </tbody>
-                </table>
-            </div>
-            
         </div>     
 
-        <div class="content bg-white card col-9 mt-2 py-2 mx-2" id="password-div" style="display: none;">Change Password</div>      
+        <div class="content bg-white card col-9 mt-2 py-2 mx-2" id="password-div" style="display: none;">
+            <h4 class="pt-2" style="text-align:center;"><strong>Change your Password</strong></h4>
+            <div class="container col-5">
+                <form action="">
+                    <div class="form-group my-2">
+                        <label for="old-password"><b>Old Password</b></label>
+                        <input class="form-control" type="text" placeholder="old password">
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="new-password"><b>New Password</b></label>
+                        <input class="form-control" type="text" placeholder="new password">
+                    </div>
+                    <div class="form-group my-2">
+                        <label for="new-password"><b>Confirm Password</b></label>
+                        <input class="form-control" type="text" placeholder="confirm password">
+                    </div>
+                    <div class="d-flex justify-end my-2">
+                        <button class="btn" style="background-color: #242424; color: white;">Change Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>      
     </div>
     <div class="d-flex col-12 justify-end">
-        <button class="btn my-3" id="admin-users" style="margin-right: 100px; background-color: #242424; color:white; display:none">Create New User</button>
+        <a href="{{ route('register') }}">
+            <button class="btn my-3" id="admin-users" style="margin-right: 100px; background-color: #242424; color:white; display:none">Create New User</button>
+        </a>
     </div>
     <div class="d-flex col-12 justify-end">
-        <button class="btn my-3" id="admin-tickets" style="margin-right: 100px; background-color: #242424; color:white; display:flex">Create New Ticket</button>
+        <a href="{{ route('ticket.create') }}" style="text-decoration: none;">
+            <button class="btn my-3" id="admin-tickets" style="margin-right: 100px; background-color: #242424; color:white; display:flex">Create New Ticket</button>
+        </a>
     </div>
     
 </x-app-layout>

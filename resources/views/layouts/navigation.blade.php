@@ -21,6 +21,13 @@
                         {{ __('My Tickets') }}
                     </x-nav-link>
                 </div>
+                @can('administer')
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link style="text-decoration: none;" :href="route('admin')" :active="request()->routeIs('admin')">
+                        {{ __('Admin Panel') }}
+                    </x-nav-link>
+                </div>
+                @endcan
             </div>
 
             <!-- Settings Dropdown -->

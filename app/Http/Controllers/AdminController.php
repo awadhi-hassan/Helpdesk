@@ -18,8 +18,11 @@ class AdminController extends Controller
         $users = User::all();
         $tickets = Ticket::all();
 
+        if ($request->filled('filter')){
+            $tickets = $tickets->where('designation', $request->filter);
+        }
+
         return view('admin', ['users' => $users, 
-            'ftickets' => $tickets->where('designation', $request->input('filter')), 
             'tickets' => $tickets,
         ]);
     }
