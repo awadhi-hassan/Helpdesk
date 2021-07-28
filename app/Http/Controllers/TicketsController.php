@@ -46,7 +46,6 @@ class TicketsController extends Controller
 
         return redirect('/ticket');
         
-        //dd($request);
     }
 }
 
