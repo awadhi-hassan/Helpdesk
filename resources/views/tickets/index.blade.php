@@ -10,7 +10,20 @@
 
     <div class="container py-5">
 
-        <table class="table table-hover">
+        <style>
+            .css-serial {
+                counter-reset: serial-number;  
+            }
+  
+            .css-serial td:first-child:before {
+                counter-increment: serial-number;  
+                content: counter(serial-number);  
+            }
+        </style>
+
+        <h4 style="text-align: center;"><b>Your Tickets</b></h4>
+
+        <table class="table table-hover css-serial">
             <thead>
                 <tr class="table-dark">
                     <th scope="col">Id</th>
@@ -25,7 +38,7 @@
             <tbody>
                 @foreach ($tickets as $ticket)
                     <tr>
-                        <td scope="row">{{ $ticket->id }}</td>
+                        <td scope="row"></td>
                         <td>{{ $ticket->ticket_number }}</td>
                         <td>{{ $ticket->title }}</td>
                         <td>{{ $ticket->designation }}</td>
