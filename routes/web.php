@@ -3,7 +3,7 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\ProfileController;
+#use App\Http\Controllers\ProfileController;
 #use App\Http\Controllers\TicketsController;
 
 /*
@@ -27,7 +27,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+Route::resource('profile', ProfileController::class)->names([
+    'index' => 'profile.index',
+    'update' => 'profile.update',
+]);
 
 Route::resource('ticket', TicketsController::class)->names([
     'index' => 'ticket.index',

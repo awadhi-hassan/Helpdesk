@@ -20,6 +20,11 @@
                 <h5><b>Department</b></h5>
                 {{ __('ICT') }}
             </div>
+            <div class="d-flex  justify-end mr-5">
+                <a href="{{ route('profile.update', $user->profile->id)}}">
+                    <button class="btn" style="background-color: #242424; color:white;">Update Profile</button>
+                </a>
+            </div>
         </div>
     </div>
 </x-app-layout>
