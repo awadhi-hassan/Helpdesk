@@ -11,15 +11,15 @@
                     @csrf
                     <div class="form-group my-2">
                         <label for="name"><b>Name</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->name }}">
+                        <input type="text" class="form-control" value="{{ $profile->user->name }}" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="username"><b>Username</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->username }}">
+                        <input type="text" class="form-control" value="{{ $profile->user->username }}" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->email }}">
+                        <input type="text" class="form-control" value="{{ $profile->user->email }}" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="avatar"><b>Profile Picture</b></label><br>
