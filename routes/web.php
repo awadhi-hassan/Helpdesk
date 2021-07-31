@@ -29,6 +29,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('profile', ProfileController::class)->names([
     'index' => 'profile.index',
+    'show' => 'profile.show',
     'update' => 'profile.update',
 ]);
 

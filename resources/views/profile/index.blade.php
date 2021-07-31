@@ -8,7 +8,7 @@
     <div class="container d-flex justify-center">
         <div class="card col-8 py-2 mt-2">
             <div class="d-flex" style="justify-content: center;">
-                <img src="{{ asset('storage/app/'.Auth::user()->profile->avatar) }}" style="height: 150px; width:auto; border-radius: 50%;">
+                <img src="{{ asset('storage/avatars/'.Auth::user()->profile->avatar) }}" style="height: 150px; width:auto; border-radius: 50%;">
             </div>
             <div>
                 <h5><b>Name</b></h5>
@@ -21,7 +21,7 @@
                 {{ __('ICT') }}
             </div>
             <div class="d-flex  justify-end mr-5">
-                <a href="{{ route('profile.update', $user->profile->id)}}">
+                <a href="{{ route('profile.show', $user->profile->id)}}">
                     <button class="btn" style="background-color: #242424; color:white;">Update Profile</button>
                 </a>
             </div>

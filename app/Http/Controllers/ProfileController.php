@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 
 class ProfileController extends Controller
 {
+
     public function index()
     {
         $user = Auth::user();
@@ -22,17 +23,19 @@ class ProfileController extends Controller
         if (request('avatar')){
 
             $ext = request('avatar')->extension();
-            $path = request('avatar')->storeAs('avatars', request()->user()->username.'.'.$ext);
-            //dd(storage_path('app/'.$path));
-            $avatar = Image::make(storage_path('app/'.$path))->fit(1000, 1000);
+            $filename = request()->user()->username.'.'.$ext;
+
+            $path = request('avatar')->storeAs('avatars', $filename, 'public');
+            
+            $avatar = Image::make(storage_path('app/public/'.$path))->fit(1000, 1000);
             $avatar->save();
         }
 
         Auth::user()->profile->update([
-            'avatar' => $path,
+            'avatar' => $filename,
         ]);
 
-        
+        return redirect('/profile');
 
     }
 
