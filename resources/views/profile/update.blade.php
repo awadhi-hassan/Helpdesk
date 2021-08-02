@@ -1,25 +1,30 @@
 <x-app-layout>
     <x-slot name="header">
-        <strong class="mt-2">Update Your Profile</strong>
+        <strong class="mt-2">Update Profile</strong>
     </x-slot>
 
     <div class="py-4">
         <div class="container d-flex justify-content-center">
             <div class="col-7">
+                <h5 style="text-align: center;"><b>Update your Profile</b></h5>
+                
+                <!-- Validation of Errors -->
+                <x-auth-validation-errors class="" :errors="$errors" />
+                
                 <form action="{{ route('profile.update', $profile->user->id) }}" enctype="multipart/form-data" method="POST">
                     @method('PATCH')
                     @csrf
                     <div class="form-group my-2">
                         <label for="name"><b>Name</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->name }}" required>
+                        <input type="text" class="form-control" value="{{ $profile->user->name }}" name="name" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="username"><b>Username</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->username }}" required>
+                        <input type="text" class="form-control" value="{{ $profile->user->username }}" name="username" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="email"><b>Email</b></label>
-                        <input type="text" class="form-control" value="{{ $profile->user->email }}" required>
+                        <input type="text" class="form-control" value="{{ $profile->user->email }}" name="email" required>
                     </div>
                     <div class="form-group my-2">
                         <label for="avatar"><b>Profile Picture</b></label><br>

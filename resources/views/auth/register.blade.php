@@ -33,6 +33,30 @@
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+            <!-- Employee ID -->
+            <div class="mt-4">
+                <x-label for="employee_id" :value="__('Employee ID')" />
+
+                <x-input id="employee_id" class="block mt-1 w-full" type="text" name="employee_id" :value="old('employee_id')" placeholder="eg. TS/EMBU/2021/18" required />
+            </div>
+
+            <!-- Department -->
+            <div class="mt-4">
+                <x-label for="department" :value="__('Department')" />
+                <select name="department" class="form-control block mt-1 w-full" id="department" required>
+                    <option></option>
+                    <option value="ICT">ICT</option>
+                    <option value="RECAS">Recas</option>
+                    <option value="HR">Human Resource</option>
+                    <option value="Catering">Catering</option>
+                    <option value="House Keeping">House Keeping</option>
+                    <option value="Maintenance">Maintenance</option>
+                    <option value="Accomodation">Accomodation</option>
+                    <option value="Accounting">Accounting</option>
+                    <option value="Procurement">Procurement</option>
+                </select>
+            </div>
+
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />

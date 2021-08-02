@@ -10,15 +10,19 @@
             <div class="d-flex" style="justify-content: center;">
                 <img src="{{ asset('storage/avatars/'.Auth::user()->profile->avatar) }}" style="height: 150px; width:auto; border-radius: 50%;">
             </div>
-            <div>
-                <h5><b>Name</b></h5>
-                {{ $user->name }}
-                <h5><b>Username</b></h5>
-                {{ $user->username }}
-                <h5><b>Email</b></h5>
-                {{ $user->email }}
-                <h5><b>Department</b></h5>
-                {{ __('ICT') }}
+            <div class="d-flex">
+                <div style="margin-left: 100px;">
+                    <h6>Employee ID</h6>
+                    <h6 class="ml-10"><b>{{ $user->employee_id }}</b></h6>                      
+                    <h6>Name</h6>
+                    <h6 class="ml-10"><b>{{ $user->name }}</b></h6>
+                    <h6>Username</h6>
+                    <h6 class="ml-10"><b>{{ $user->username }}</b></h6>                
+                    <h6>Email</h6>
+                    <h6 class="ml-10"><b>{{ $user->email }}</b></h6>                
+                    <h6>Department</h6>
+                    <h6 class="ml-10"><b>{{ $user->department }}</b></h6>                      
+                </div>
             </div>
             <div class="d-flex  justify-end mr-5">
                 <a href="{{ route('profile.show', $user->profile->id)}}">

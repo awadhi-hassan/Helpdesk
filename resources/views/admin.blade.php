@@ -32,7 +32,7 @@
 
     <div class="d-flex">
         <div class="column col-2 mt-1 mx-2">
-            <img src="{{ asset(Auth::user()->profile->avatar) }}" style="height: 200px; width:auto; border-radius:50%" class="my-2 ml-5">
+            <img src="{{ asset('storage/avatars/'.Auth::user()->profile->avatar) }}" style="height: 200px; width:auto; border-radius:50%" class="my-2 ml-5">
             <div class="card" style="background-color: #242424; color: white;">
                 <table class="table table-dark table-hover table-borderless" style="color: white; border:#242424;">
                     <thead style="text-align: center;">
@@ -56,23 +56,51 @@
         </div>
         
         <div class="content bg-white card col-9 mt-2 pt-2 mx-2" id="users-div" style="display: none;">
-            <h4 class="pt-2" style="text-align:center;"><strong>List of All Users in the System</strong></h4>   
-            <table class="table table-hover">
+            <h4 class="pt-2" style="text-align:center;"><strong>List of All Users in the System</strong></h4>  
+            <form action="{{ action('AdminController@index') }}" method="GET">
+                
+                <div class="form-group d-flex align-items-center ml-10">
+                    <label for="users_filter" class="mr-3"><strong>Filter by Department:</strong></label>
+                    <div class="col-3">
+                        <select class="form-control" name="users_filter" id="users_filter">
+                            <option value=""></option>
+                            <option value="ICT">ICT</option>
+                            <option value="RECAS">Recas</option>
+                            <option value="HR">Human Resource</option>
+                            <option value="Catering">Catering</option>
+                            <option value="House Keeping">House Keeping</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Accomodation">Accomodation</option>
+                            <option value="Accounting">Accounting</option>
+                            <option value="Procurement">Procurement</option>
+                        </select>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-sm ml-10" style="background-color: #242424; color: white;">Filter</button>
+                    </div>
+                </div>
+                
+            </form> 
+            <table class="table table-hover mt-2">
                 <thead>
                     <tr class="table-dark">
                         <th scope="col">Id</th>
+                        <th scope="col">Employee ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">Username</th>
                         <th scope="col">Email</th>
+                        <th scope="col">Department</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
                         <tr>
                             <td scope="row">{{ $user->id }}</td>
+                            <td scope="row">{{ $user->employee_id }}</td>
                             <td scope="row">{{ $user->name }}</td>
                             <td scope="row">{{ $user->username }}</td>
                             <td scope="row">{{ $user->email }}</td>
+                            <td scope="row">{{ $user->department }}</td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -85,9 +113,9 @@
             <form action="{{ action('AdminController@index') }}" method="GET">
                 
                 <div class="form-group d-flex align-items-center ml-10">
-                    <label for="filter" class="mr-3"><strong>Filter by Department:</strong></label>
+                    <label for="tickets_filter" class="mr-3"><strong>Filter by Department:</strong></label>
                     <div class="col-3">
-                        <select class="form-control" name="filter" id="filter">
+                        <select class="form-control" name="tickets_filter" id="tickets_filter">
                             <option value=""></option>
                             <option value="ICT">ICT</option>
                             <option value="RECAS">Recas</option>
@@ -160,8 +188,8 @@
         </div>      
     </div>
     <div class="d-flex col-12 justify-end">
-        <a href="{{ route('register') }}">
-            <button class="btn my-3" id="admin-users" style="margin-right: 100px; background-color: #242424; color:white; display:none">Create New User</button>
+        <a href="{{ route('register') }}" style="text-decoration: none;">
+            <button class="btn my-3" id="admin-users" style="text-decoration: none; margin-right: 100px; background-color: #242424; color:white; display:none">Create New User</button>
         </a>
     </div>
     <div class="d-flex col-12 justify-end">
