@@ -28,8 +28,7 @@ class ProfileController extends Controller
             'email' => ['required', 'email'],
             'avatar' => ['nullable', 'image', 'max:5000'],
         ]);
-
-        dd($data);
+        
         if (request('avatar')){
 
             $ext = request('avatar')->extension();

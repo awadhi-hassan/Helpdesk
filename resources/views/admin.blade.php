@@ -7,25 +7,25 @@
         function users(){
             document.getElementById("tickets-div").style.display = 'none'
             document.getElementById("password-div").style.display = 'none'
-            document.getElementById("users-div").style.display = 'flex'
             document.getElementById("admin-tickets").style.display = 'none'
+            document.getElementById("users-div").style.display = 'flex'
             document.getElementById("admin-users").style.display = 'flex'
         }
 
         function tickets(){
             document.getElementById("users-div").style.display = 'none'
+            document.getElementById("admin-users").style.display = 'none'
             document.getElementById("password-div").style.display = 'none'
             document.getElementById("tickets-div").style.display = 'flex'
-            document.getElementById("admin-users").style.display = 'none'
             document.getElementById("admin-tickets").style.display = 'flex'
         }
 
         function password(){
             document.getElementById("users-div").style.display = 'none'
             document.getElementById("tickets-div").style.display = 'none'
-            document.getElementById("password-div").style.display = 'flex'
-            document.getElementById("admin-tickets").style.display = 'none'
             document.getElementById("admin-users").style.display = 'none'
+            document.getElementById("admin-tickets").style.display = 'none'
+            document.getElementById("password-div").style.display = 'flex'
         }
         
     </script>
@@ -54,8 +54,11 @@
                 </table>
             </div>
         </div>
-        
+        @if ($request->tickets_filter)
         <div class="content bg-white card col-9 mt-2 pt-2 mx-2" id="users-div" style="display: none;">
+        @else
+        <div class="content bg-white card col-9 mt-2 pt-2 mx-2" id="users-div" style="display: flex;">
+        @endif
             <h4 class="pt-2" style="text-align:center;"><strong>List of All Users in the System</strong></h4>  
             <form action="{{ action('AdminController@index') }}" method="GET">
                 
@@ -106,9 +109,11 @@
                 </tbody>
             </table>
         </div>        
-        
+        @if ($request->tickets_filter)
         <div class="content bg-white card col-10 mt-2 py-2 mx-2" id="tickets-div" style="display: flex;">
-
+        @else 
+        <div class="content bg-white card col-10 mt-2 py-2 mx-2" id="tickets-div" style="display: none;">
+        @endif
             <h4 class="pt-2" style="text-align:center;"><strong>Tickets in the System</strong></h4>
             <form action="{{ action('AdminController@index') }}" method="GET">
                 
@@ -189,12 +194,12 @@
     </div>
     <div class="d-flex col-12 justify-end">
         <a href="{{ route('register') }}" style="text-decoration: none;">
-            <button class="btn my-3" id="admin-users" style="text-decoration: none; margin-right: 100px; background-color: #242424; color:white; display:none">Create New User</button>
+            <button class="btn my-3" id="admin-users" style="text-decoration: none; margin-right: 100px; background-color: #242424; color:white; display:flex">Create New User</button>
         </a>
     </div>
     <div class="d-flex col-12 justify-end">
         <a href="{{ route('ticket.create') }}" style="text-decoration: none;">
-            <button class="btn my-3" id="admin-tickets" style="margin-right: 100px; background-color: #242424; color:white; display:flex">Create New Ticket</button>
+            <button class="btn my-3" id="admin-tickets" style="margin-right: 100px; background-color: #242424; color:white; display:none">Create New Ticket</button>
         </a>
     </div>
     
