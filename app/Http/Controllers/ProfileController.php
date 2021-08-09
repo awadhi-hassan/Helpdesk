@@ -14,9 +14,8 @@ class ProfileController extends Controller
 
     public function index()
     {
-        $user = Auth::user();
-        return view('profile.index', ['user' => $user]);
     }
+        
 
     public function update(Profile $profile)
     {    
@@ -38,18 +37,32 @@ class ProfileController extends Controller
             
             $avatar = Image::make(storage_path('app/public/'.$path))->fit(1000, 1000);
             $avatar->save();
+            
+            $profile->update([
+                'avatar' => $filename,
+            ]);
         }
 
-        Auth::user()->profile->update([
-            'avatar' => $filename,
+        
+        
+        $profile->user()->update([
+            'name' => $data['name'],
+            'username' => $data['username'],
+            'email' => $data['email'],
         ]);
 
-        return redirect('/profile');
+        return redirect("/profile/".$profile->user->username);
 
     }
 
-    public function show(Profile $profile)
+    public function show()
     {
-        return view('profile.update', ['profile' => $profile]);
+        $user = Auth::user();
+        return view('profile.index', ['user' => $user]);
+    }
+    
+    public function edit(Profile $profile)
+    {
+        return view('profile.update', ['profile'=> $profile]);
     }
 }

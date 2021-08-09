@@ -23,7 +23,7 @@
                 </div>
                 @can('administer')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link style="text-decoration: none;" :href="route('admin')" :active="request()->routeIs('admin')">
+                    <x-nav-link style="text-decoration: none;" :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                         {{ __('Admin Panel') }}
                     </x-nav-link>
                 </div>
@@ -48,7 +48,7 @@
                     <x-slot name="content">
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
-                            <x-dropdown-link class="flex" style="text-decoration: none;" :href="route('profile.index')">
+                            <x-dropdown-link class="flex" style="text-decoration: none;" :href="route('profile.show', Auth::user()->username)">
                                 <img class="mr-2" src="{{ asset('person-circle.svg') }}">
                                 {{ Auth::user()->username }}
                             </x-dropdown-link>

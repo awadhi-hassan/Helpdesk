@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="color: black; text-decoration: none" href="">
+                        <a style="color: black; text-decoration: none" href="{{ route('contact') }}">
                             <div class="card mt-3" id="contactus" style="padding: 20px;">
                                 <div class="flex ml-10">
                                     <img src="{{ asset('contact.png') }}" style="height: 50px; width: auto;" alt="">
@@ -46,7 +46,7 @@
                         </a>
                     </div>
                     <div class="p-6 bg-white flex" style="justify-content: space-around;" id="dashboard_lower">
-                        <a style="color: black; text-decoration: none" href="">                        
+                        <a style="color: black; text-decoration: none" href="{{ route('feedback') }}">                        
                             <div class="card mt-3" id="feedback" style="padding: 20px;">
                                 <div class="flex ml-10">
                                     <img src="{{ asset('feedback.png') }}" style="height: 50px; width: auto;" alt="">

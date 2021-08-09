@@ -27,6 +27,18 @@
             document.getElementById("admin-tickets").style.display = 'none'
             document.getElementById("password-div").style.display = 'flex'
         }
+
+        function user_edit(element){
+            var rows = document.getElementById("admin_users_table").getElementsByTagName("tr");
+
+            for(var i in rows){
+                rows[i].onclick=function(){
+                    param = this.rowIndex
+                    window.location=`/admin/${param}/edit`
+                }
+            }
+            
+        }
         
     </script>
 
@@ -59,6 +71,16 @@
         @else
         <div class="content bg-white card col-9 mt-2 pt-2 mx-2" id="users-div" style="display: flex;">
         @endif
+            <style>
+                .css-serial {
+                    counter-reset: serial-number;  
+                }
+    
+                .css-serial td:first-child:before {
+                    counter-increment: serial-number;  
+                    content: counter(serial-number);  
+                }
+            </style>
             <h4 class="pt-2" style="text-align:center;"><strong>List of All Users in the System</strong></h4>  
             <form action="{{ action('AdminController@index') }}" method="GET">
                 
@@ -84,7 +106,7 @@
                 </div>
                 
             </form> 
-            <table class="table table-hover mt-2">
+            <table class="table table-hover mt-2 css-serial" id="admin_users_table">
                 <thead>
                     <tr class="table-dark">
                         <th scope="col">Id</th>
@@ -97,8 +119,8 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                        <tr>
-                            <td scope="row">{{ $user->id }}</td>
+                        <tr onclick="user_edit(this)">
+                            <td scope="row"></td>
                             <td scope="row">{{ $user->employee_id }}</td>
                             <td scope="row">{{ $user->name }}</td>
                             <td scope="row">{{ $user->username }}</td>
@@ -140,8 +162,9 @@
                 
             </form>
             <div class="pt-2" id="tickets-table" style="display: flex;">
+                
                 <!-- All the Tickets -->
-                <table class="table table-hover" >
+                <table class="table table-hover css-cerial">
                     <thead>
                         <tr class="table-dark">
                             <th scope="col">Id</th>
@@ -155,7 +178,7 @@
                     <tbody>                        
                         @foreach ($tickets as $ticket)
                             <tr>
-                                <td scope="row">{{ $ticket->id }}</td>
+                                <td scope="row"></td>
                                 <td scope="row">{{ $ticket->ticket_number }}</td>
                                 <td scope="row">{{ $ticket->title }}</td>
                                 <td scope="row">{{ $ticket->designation }}</td>
@@ -193,7 +216,7 @@
         </div>      
     </div>
     <div class="d-flex col-12 justify-end">
-        <a href="{{ route('register') }}" style="text-decoration: none;">
+        <a href="{{ route('admin.create') }}" style="text-decoration: none;">
             <button class="btn my-3" id="admin-users" style="text-decoration: none; margin-right: 100px; background-color: #242424; color:white; display:flex">Create New User</button>
         </a>
     </div>

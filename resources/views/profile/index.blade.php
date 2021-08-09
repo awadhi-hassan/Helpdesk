@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="d-flex  justify-end mr-5">
-                <a href="{{ route('profile.show', $user->profile->id)}}">
+                <a href="{{ route('profile.edit', $user->id)}}">
                     <button class="btn" style="background-color: #242424; color:white;">Update Profile</button>
                 </a>
             </div>

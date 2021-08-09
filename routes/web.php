@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-#use App\Http\Controllers\ProfileController;
-#use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +14,10 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('admin',[AdminController::class, 'index'])
-->middleware(['role:admin'])->name('admin');
+Route::resource('admin', AdminController::class)->middleware(['role:admin'])->names([
+    'index' => 'admin.index',
+    'create' => 'admin.create'
+]);
 
 Route::get('/', function () {
     return view('auth.login');
@@ -38,5 +38,13 @@ Route::resource('ticket', TicketsController::class)->names([
     'create' => 'ticket.create',
     'store' => 'ticket.store',
 ]);
+
+Route::get('contact', function(){
+    return view('contact');
+})->name('contact');
+
+Route::get('feedback', function(){
+    return view('feedback');
+})->name('feedback');
 
 require __DIR__.'/auth.php';
