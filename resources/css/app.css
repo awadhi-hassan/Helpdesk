@@ -3,7 +3,7 @@
 @import 'tailwindcss/utilities';
 @import 'bootstrap';
 
-#dashboard, #dashboard_lower {
+#dashboard, #dashboard_lower, #contact-container {
     transition: 1s;
 }
 
@@ -11,7 +11,7 @@
     border-radius: 25px;
 }
 
-#ticket:hover, #faqs:hover, #contactus:hover, #feedback:hover, #forum:hover {
+#ticket:hover, #faqs:hover, #contactus:hover, #feedback:hover, #forum:hover, #contact-cards:hover {
     box-shadow: 0 4px 6px 4px rgba(0, 0, 0, 0.4);
     transform: scale(1.06);
 }
