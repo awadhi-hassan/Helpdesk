@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                         </a>
-                        <a style="color: black; text-decoration: none" href="">
+                        <a style="color: black; text-decoration: none" href="{{ route('faqs') }}">
                             <div class="card mt-3" id="faqs" style="padding: 20px;">
                                 <div class="flex ml-10">
                                     <img src="{{ asset('faq.png') }}" style="height: 50px; width: auto;" alt="">

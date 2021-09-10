@@ -39,6 +39,12 @@ Route::resource('ticket', TicketsController::class)->names([
     'store' => 'ticket.store',
 ]);
 
+Route::resource('questions', QuestionsController::class)->names([
+    'index' => 'questions.index',
+]);
+
+Route::resource('questions/{question}/answer', AnswersController::class);
+
 Route::get('contact', function(){
     return view('contact');
 })->name('contact');
@@ -46,5 +52,9 @@ Route::get('contact', function(){
 Route::get('feedback', function(){
     return view('feedback');
 })->name('feedback');
+
+Route::get('faqs', function(){
+    return view('faqs');
+})->name('faqs');
 
 require __DIR__.'/auth.php';
