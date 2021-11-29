@@ -39,7 +39,7 @@
                     <label for="subject"><b>Feedback</b></label>
                     <textarea class="form-control my-2" name="subject" id="subject" cols="35" rows="5" placeholder="Kindly write your comment, complement, complaint, suggestion, recomendation or review here...."></textarea>
                 </div>
-                <div class="form-group d-flex justify-end my-2">
+                <div class="form-group d-flex justify-end my-2 mx-3">
                     <button type="submit" class="btn" style="color: white; background-color: #242424;">Submit Feedback</button>
                 </div>
             </form>

@@ -164,7 +164,7 @@
             <div class="pt-2" id="tickets-table" style="display: flex;">
                 
                 <!-- All the Tickets -->
-                <table class="table table-hover css-cerial">
+                <table class="table table-hover css-serial">
                     <thead>
                         <tr class="table-dark">
                             <th scope="col">Id</th>
